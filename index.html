@@ -1,143 +1,849 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Souhrid Suresh | Cybersecurity Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Souhrid Suresh | Cybersecurity & Software Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Souhrid Suresh, MTech Cyber Forensics & Information Security - Cybersecurity, SOC, Digital Forensics and Secure Software Development." />
   <style>
-    body {
+    :root {
+      --bg: #020617;
+      --bg-alt: #020617;
+      --card: #020617;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.15);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.25);
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.9);
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: white;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, rgba(56,189,248,0.15), transparent 50%),
+                  radial-gradient(circle at bottom, rgba(15,118,110,0.12), transparent 55%),
+                  var(--bg);
+      color: var(--text-main);
       scroll-behavior: smooth;
+      line-height: 1.6;
     }
-    nav {
-      position: fixed;
-      width: 100%;
-      background: #020617;
-      padding: 15px;
-      text-align: center;
-      z-index: 10;
-    }
-    nav a {
-      color: #38bdf8;
-      margin: 0 15px;
+
+    a {
+      color: var(--accent);
       text-decoration: none;
-      font-weight: bold;
     }
+
+    /* NAVBAR */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom,
+        rgba(15, 23, 42, 0.95),
+        rgba(15, 23, 42, 0.85),
+        transparent
+      );
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--accent);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* LAYOUT */
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 60px 20px 40px;
+    }
+
     section {
-      padding: 80px 20px;
-      max-width: 1000px;
-      margin: auto;
+      margin-bottom: 72px;
     }
-    h1 span { color: #38bdf8; }
-    .hero { text-align: center; padding-top: 120px; }
-    .skills, .projects {
+
+    section h2 {
+      font-size: 1.6rem;
+      margin-bottom: 18px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    section h2 span {
+      color: var(--accent);
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    /* HERO */
+    .hero {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.8fr);
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 80px;
     }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 0.75rem;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.8);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 3.3vw, 3rem);
+      margin-bottom: 12px;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero-title-sub {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .hero-summary {
+      font-size: 0.98rem;
+      color: #cbd5f5;
+      margin-bottom: 24px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border-radius: var(--radius-pill);
+      border: 1px solid transparent;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease, border-color 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #020617;
+      box-shadow: 0 12px 30px rgba(56, 189, 248, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(56, 189, 248, 0.45);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.6);
+      border-color: rgba(148, 163, 184, 0.5);
+      color: var(--text-muted);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      background: rgba(15, 23, 42, 0.9);
+      transform: translateY(-1px);
+    }
+
+    .hero-links {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .hero-links a {
+      margin-right: 10px;
+    }
+
+    .hero-links a:hover {
+      color: var(--accent);
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.2), transparent 50%),
+                  rgba(15, 23, 42, 0.95);
+      border-radius: 24px;
+      padding: 20px 22px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .hero-highlight {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .hero-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .pill {
+      padding: 6px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    .hero-metric {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed rgba(148, 163, 184, 0.4);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .typewriter {
+      display: inline-block;
+      border-right: 2px solid var(--accent);
+      white-space: nowrap;
+      overflow: hidden;
+      animation: caret 0.8s steps(1) infinite;
+      font-weight: 500;
+      color: #e5e7eb;
+    }
+
+    @keyframes caret {
+      50% { border-color: transparent; }
+    }
+
+    /* GRID SECTIONS */
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
     .card {
-      background: #020617;
-      padding: 20px;
-      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.98));
+      border-radius: var(--radius-lg);
+      padding: 18px 18px 16px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 14px 36px rgba(15, 23, 42, 0.8);
     }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+      color: #e5e7eb;
+    }
+
+    .card small {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      margin-top: 10px;
+      color: #d1d5db;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .tag {
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    /* TIMELINE (EDU / EXPERIENCE) */
+    .timeline {
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 6px;
+      bottom: 6px;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      opacity: 0.6;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 18px;
+      padding-left: 14px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -3px;
+      top: 6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.9);
+    }
+
+    .timeline-item h3 {
+      font-size: 0.98rem;
+      margin-bottom: 2px;
+    }
+
+    .timeline-item span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .timeline-item p {
+      margin-top: 6px;
+      font-size: 0.88rem;
+      color: #d1d5db;
+    }
+
+    /* CONTACT */
+    .contact-box {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: var(--radius-lg);
+      padding: 18px 18px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      display: grid;
+      gap: 10px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.9rem;
+    }
+
+    .contact-label {
+      min-width: 72px;
+      color: var(--text-muted);
+    }
+
     footer {
       text-align: center;
-      padding: 20px;
-      background: #020617;
+      padding: 18px 16px 28px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
     }
-    .btn {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 20px;
-      background: #38bdf8;
-      color: black;
-      text-decoration: none;
-      border-radius: 5px;
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      main {
+        padding-top: 40px;
+      }
+      nav {
+        position: fixed;
+      }
+      section {
+        scroll-margin-top: 70px;
+      }
+      .nav-links {
+        display: none; /* keep it minimal on mobile */
+      }
+    }
+
+    @media (min-width: 769px) {
+      section {
+        scroll-margin-top: 90px;
+      }
     }
   </style>
 </head>
 <body>
 
-<nav>
-  <a href="#about">About</a>
-  <a href="#skills">Skills</a>
-  <a href="#projects">Projects</a>
-  <a href="#contact">Contact</a>
-</nav>
-
-<section class="hero">
-  <h1>Hi, I'm <span>Souhrid Suresh</span></h1>
-  <p>Cybersecurity Engineer | SOC Analyst Aspirant | Secure Software Developer</p>
-  <a href="#projects" class="btn">View My Work</a>
-</section>
-
-<section id="about">
-  <h2>About Me</h2>
-  <p>
-    I am an MTech student in Cyber Forensics and Information Security with strong interest in 
-    SOC operations, digital forensics, cryptography, and AI security. I focus on building 
-    secure, privacy-preserving systems and intelligent attack detection models.
-  </p>
-</section>
-
-<section id="skills">
-  <h2>Skills</h2>
-  <div class="skills">
-    <div class="card">Python</div>
-    <div class="card">Java</div>
-    <div class="card">HTML</div>
-    <div class="card">CSS</div>
-    <div class="card">JavaScript</div>
-    <div class="card">Network Security</div>
-    <div class="card">Digital Forensics</div>
-    <div class="card">Cryptography</div>
-    <div class="card">Penetration Testing</div>
-    <div class="card">Machine Learning Security</div>
-  </div>
-</section>
-
-<section id="projects">
-  <h2>Featured Projects</h2>
-  <div class="projects">
-
-    <div class="card">
-      <h3>Secure Diabetes Prediction (Homomorphic Encryption)</h3>
-      <p>
-        Privacy-preserving ML system that performs encrypted medical prediction without
-        exposing patient data.
-      </p>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-logo">SOUHRID SURESH</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+      </div>
     </div>
+  </nav>
 
-    <div class="card">
-      <h3>Secure DNA Storage for Forensic Analysis</h3>
-      <p>
-        Encrypted forensic DNA storage with STR profile matching and role-based access.
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="about">
+      <div>
+        <div class="badge">
+          <span class="badge-dot"></span>
+          Open to roles: SOC Analyst • Security Engineer • Secure Software Developer
+        </div>
+        <h1>Hi, I'm <span>Souhrid Suresh</span></h1>
+        <p class="hero-title-sub">
+          <span class="typewriter" id="typewriter"></span>
+        </p>
+        <p class="hero-summary">
+          MTech student specializing in Cyber Forensics and Information Security with hands-on experience
+          in network security, digital forensics, and cyber attack simulation. Skilled in tools like
+          Wireshark, Nmap, Metasploit, Aircrack-ng and Kali Linux, with a strong focus on secure coding,
+          incident response, and Python-based automation.
+        </p>
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="Souhrid_Resume.pdf" target="_blank" rel="noopener">
+            Download CV
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/Souhrid007" target="_blank" rel="noopener">
+            GitHub Profile
+          </a>
+          <a class="btn btn-ghost" href="https://linkedin.com/in/souhridsuresh" target="_blank" rel="noopener">
+            LinkedIn
+          </a>
+        </div>
+        <div class="hero-links">
+          <strong>Email:</strong> <a href="mailto:souhridsuresh@gmail.com">souhridsuresh@gmail.com</a> •
+          <strong>Location:</strong> Kerala, India
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <div class="hero-highlight">At a Glance</div>
+        <div class="hero-pill-row">
+          <span class="pill">MTech – Cyber Forensics &amp; InfoSec</span>
+          <span class="pill">Network Security</span>
+          <span class="pill">Digital Forensics</span>
+          <span class="pill">Python Automation</span>
+          <span class="pill">Secure ML</span>
+        </div>
+        <div class="hero-metric">
+          🚀 Recent work: Audio spoofing detection using CNN, secure DNA storage platform, and
+          privacy-preserving diabetes prediction system.
+        </div>
+      </aside>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2><span>//</span> Skills</h2>
+      <p class="section-subtitle">A mix of cybersecurity, software engineering, and data skills.</p>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Programming & Development</h3>
+          <div class="tag-row">
+            <span class="tag">Python</span>
+            <span class="tag">Java</span>
+            <span class="tag">C</span>
+            <span class="tag">SQL</span>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">REST APIs</span>
+            <span class="tag">Git</span>
+            <span class="tag">Linux</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Cybersecurity & Forensics</h3>
+          <div class="tag-row">
+            <span class="tag">Network Security</span>
+            <span class="tag">Digital Forensics</span>
+            <span class="tag">Incident Response</span>
+            <span class="tag">Log Analysis</span>
+            <span class="tag">Vulnerability Assessment</span>
+            <span class="tag">Penetration Testing</span>
+            <span class="tag">DNS Security (BIND9)</span>
+            <span class="tag">Kali Linux</span>
+            <span class="tag">Ubuntu</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Tools & Platforms</h3>
+          <div class="tag-row">
+            <span class="tag">Wireshark</span>
+            <span class="tag">Nmap</span>
+            <span class="tag">Metasploit</span>
+            <span class="tag">SQLMap</span>
+            <span class="tag">Aircrack-ng</span>
+            <span class="tag">FTK Imager</span>
+            <span class="tag">EnCase</span>
+            <span class="tag">MinIO (S3)</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">Streamlit</span>
+            <span class="tag">TensorFlow/Keras</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Soft Skills</h3>
+          <div class="tag-row">
+            <span class="tag">Problem Solving</span>
+            <span class="tag">Critical Thinking</span>
+            <span class="tag">Teamwork</span>
+            <span class="tag">Leadership</span>
+            <span class="tag">Communication</span>
+            <span class="tag">Coordination</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE & EDUCATION -->
+    <section id="experience">
+      <h2><span>//</span> Experience & Education</h2>
+
+      <div class="grid grid-2">
+        <div>
+          <h3 style="margin-bottom:8px;">Internship Experience</h3>
+          <div class="timeline">
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <h3>Cyber Security Intern – CDAC, Thiruvananthapuram</h3>
+              <span>2025</span>
+              <p>
+                Developed a CNN-based model for detecting audio spoofing attacks. Implemented MFCC extraction,
+                spectrogram processing, dataset preparation, and model evaluation as part of an AI-driven security pipeline.
+              </p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <h3>Python Development Intern – Cognifyz Technologies</h3>
+              <span>2024</span>
+              <p>
+                Completed a Python development internship, building mini-projects and scripts while strengthening analytical,
+                coordination, and communication skills through remote collaboration and reporting.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <div>
+          <h3 style="margin-bottom:8px;">Education</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <h3>M.Tech – CSE (Cyber Forensics &amp; Information Security)</h3>
+              <span>ER &amp; DCI Institute of Technology, Thiruvananthapuram · 2024–2026</span>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <h3>B.Tech – Computer Science and Engineering</h3>
+              <span>College of Engineering Chengannur · 2020–2024 · CGPA: 7.02</span>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <h3>Higher Secondary (XII)</h3>
+              <span>Excel Public School, Mahe · 2017–2019 · 92.4%</span>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <h3>Secondary School (X)</h3>
+              <span>Kendriya Vidyalaya Mahe · 2016–2017 · 94%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2><span>//</span> Projects</h2>
+      <p class="section-subtitle">A snapshot of my security, AI, and software development work.</p>
+
+      <div class="grid grid-2">
+
+        <div class="card">
+          <h3>Secure DNA Storage Platform</h3>
+          <small>Python · FastAPI · MinIO · AES-256</small>
+          <p>
+            Designed a secure DNA file storage system for forensic workflows using encrypted FASTQ/FASTA uploads,
+            AES-256 encryption, MinIO S3 storage, and metadata tracking. Supports STR extraction and AI-assisted retrieval.
+          </p>
+          <div class="tag-row">
+            <span class="tag">Forensics</span>
+            <span class="tag">Encryption</span>
+            <span class="tag">S3 Storage</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Diabetes Prediction with Homomorphic Encryption</h3>
+          <small>Python · TenSEAL · Streamlit</small>
+          <p>
+            Built an encrypted ML pipeline that processes fully encrypted patient data end-to-end. Implemented an
+            Encrypt → Predict → Decrypt workflow enabling privacy-preserving prediction with a Streamlit UI.
+          </p>
+          <div class="tag-row">
+            <span class="tag">Homomorphic Encryption</span>
+            <span class="tag">Secure ML</span>
+            <span class="tag">Healthcare</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>TREKZEN – Tour Planning & Optimization</h3>
+          <small>HTML · CSS · JavaScript · Node.js</small>
+          <p>
+            Web app that helps tourists plan tours and get optimized routes using Lin-Kernighan and Nearest Neighbour
+            algorithms for route optimization and approximation.
+          </p>
+          <div class="tag-row">
+            <span class="tag">Routing Algorithms</span>
+            <span class="tag">Full Stack</span>
+            <span class="tag">Travel</span>
+          </div>
+          <!-- TODO: If you want to show the live link: -->
+          <!-- <p style="margin-top:6px;font-size:0.8rem;"><a href="https://trekzen11.glitch.me" target="_blank" rel="noopener">Live Demo</a></p> -->
+        </div>
+
+        <div class="card">
+          <h3>Handwritten Digit Recognition (CNN)</h3>
+          <small>Python · TensorFlow/Keras · MNIST</small>
+          <p>
+            Developed a CNN model to classify handwritten digits using the MNIST dataset, experimenting with
+            convolutional architectures, regularization, and training strategies to improve accuracy.
+          </p>
+          <div class="tag-row">
+            <span class="tag">Deep Learning</span>
+            <span class="tag">Computer Vision</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Cybersecurity Practical Work</h3>
+          <small>Kali Linux · BIND9 · SQLMap</small>
+          <p>
+            Simulated DNS flood attacks using BIND9 on Ubuntu and Kali Linux, and demonstrated SQL Injection attacks
+            using SQLMap, analyzing server response patterns and mitigation strategies.
+          </p>
+          <div class="tag-row">
+            <span class="tag">Attack Simulation</span>
+            <span class="tag">DNS Security</span>
+            <span class="tag">SQL Injection</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Audio Spoofing Detection</h3>
+          <small>Python · CNN · Audio Processing</small>
+          <p>
+            Built a CNN-based system to detect spoofed and replayed audio samples using MFCC features and spectrograms,
+            aimed at strengthening voice biometric security.
+          </p>
+          <div class="tag-row">
+            <span class="tag">Audio Security</span>
+            <span class="tag">MFCC</span>
+            <span class="tag">Biometric Defense</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS & EXTRAS -->
+    <section id="certifications">
+      <h2><span>//</span> Certifications & Involvement</h2>
+      <div class="grid grid-2">
+
+        <div class="card">
+          <h3>Certifications</h3>
+          <ul style="margin-left:18px; margin-top:6px; font-size:0.9rem;">
+            <li>
+              Databases and SQL for Data Science with Python – IBM (Coursera), 2024<br />
+              <span style="color:var(--text-muted); font-size:0.82rem;">
+                SQL, database operations, and Python-driven querying for data workflows.
+              </span>
+            </li>
+            <li style="margin-top:6px;">
+              Database Management System (DBMS) – NPTEL (IIT Kharagpur), Jul–Sep 2025 – Elite (63%)<br />
+              <span style="color:var(--text-muted); font-size:0.82rem;">
+                Relational models, indexing, transactions, SQL, and ER design.
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Leadership & Activities</h3>
+          <ul style="margin-left:18px; margin-top:6px; font-size:0.9rem;">
+            <li>E-sports Coordinator, SGC CEC</li>
+            <li>Volunteer at IEEE and IEDC organizations</li>
+            <li>Event Coordinator at Tharang, CEC Tech Fest 2023</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2><span>//</span> Contact</h2>
+      <p class="section-subtitle">
+        Open to internships, full-time roles, and research collaborations in cybersecurity, SOC, DFIR and secure software.
       </p>
-    </div>
+      <div class="contact-box">
+        <div class="contact-row">
+          <span class="contact-label">Email</span>
+          <span><a href="mailto:souhridsuresh@gmail.com">souhridsuresh@gmail.com</a></span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">GitHub</span>
+          <span><a href="https://github.com/Souhrid007" target="_blank" rel="noopener">github.com/Souhrid007</a></span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">LinkedIn</span>
+          <span><a href="https://linkedin.com/in/souhridsuresh" target="_blank" rel="noopener">linkedin.com/in/souhridsuresh</a></span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">Phone</span>
+          <span>+91 7306287546</span>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    <div class="card">
-      <h3>Audio Spoofing Detection</h3>
-      <p>
-        CNN-based AI system to detect replay and deepfake voice biometric attacks.
-      </p>
-    </div>
+  <footer>
+    © 2025 · Designed & built by Souhrid Suresh · Cyber Forensics & Information Security
+  </footer>
 
-  </div>
-</section>
+  <!-- Simple typewriter effect -->
+  <script>
+    const roles = [
+      "Cybersecurity Engineer",
+      "SOC Analyst Aspirant",
+      "Digital Forensics Enthusiast",
+      "Secure Software Developer",
+      "AI & ML Security Explorer"
+    ];
 
-<section id="contact">
-  <h2>Contact Me</h2>
-  <p>Email: souhridsuresh@gmail.com</p>
-  <p>GitHub: https://github.com/Souhrid007</p>
-  <p>LinkedIn: www.linkedin.com/in/souhridsuresh</p>
-</section>
+    const el = document.getElementById("typewriter");
+    let roleIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
 
-<footer>
-  <p>© 2025 Souhrid Suresh | Cybersecurity Portfolio</p>
-</footer>
+    function typeLoop() {
+      const current = roles[roleIndex];
+      if (!deleting) {
+        charIndex++;
+        if (charIndex === current.length + 3) {
+          deleting = true;
+          setTimeout(typeLoop, 900);
+          el.textContent = current;
+          return;
+        }
+      } else {
+        charIndex--;
+        if (charIndex === 0) {
+          deleting = false;
+          roleIndex = (roleIndex + 1) % roles.length;
+        }
+      }
+      el.textContent = current.slice(0, Math.max(0, charIndex));
+      setTimeout(typeLoop, deleting ? 50 : 90);
+    }
 
+    typeLoop();
+  </script>
 </body>
 </html>
